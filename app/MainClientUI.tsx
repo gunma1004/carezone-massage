@@ -1,10 +1,13 @@
+// app/MainClientUI.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-// 서울(25구) · 경기(31개 시·군 세부 구 포함) · 인천 전지역 데이터
-const regionData: Record<string, { name: string; districts: Record<string, { name: string; dongs: string[] }> }> = {
+export const regionData: Record<
+  string,
+  { name: string; districts: Record<string, { name: string; dongs: string[] }> }
+> = {
   seoul: {
     name: "서울특별시",
     districts: {
@@ -33,7 +36,7 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
       gangnam: { name: "강남구", dongs: ["역삼1동", "역삼2동", "개포1동", "개포2동", "개포4동", "청담동", "삼성1동", "삼성2동", "대치1동", "대치2동", "대치4동", "신사동", "논현1동", "논현2동", "압구정동", "세곡동", "자곡동", "일원동", "수서동", "도곡1동", "도곡2동"] },
       songpa: { name: "송파구", dongs: ["잠실본동", "잠실2동", "잠실3동", "잠실4동", "잠실6동", "잠실7동", "풍납1동", "풍납2동", "거여1동", "거여2동", "마천1동", "마천2동", "방이1동", "방이2동", "오륜동", "오금동", "송파1동", "송파2동", "석촌동", "삼전동", "가락본동", "가락1동", "가락2동", "문정1동", "문정2동", "장지동", "위례동", "잠실동"] },
       gangdong: { name: "강동구", dongs: ["강일동", "상일1동", "상일2동", "명일1동", "명일2동", "고덕1동", "고덕2동", "암사1동", "암사2동", "암사3동", "천호1동", "천호2동", "천호3동", "성내1동", "성내2동", "성내3동", "둔촌1동", "둔촌2동"] },
-    }
+    },
   },
   gyeonggi: {
     name: "경기도",
@@ -81,8 +84,8 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
       uijeongbu: { name: "의정부시", dongs: ["의정부동", "호원동", "장암동", "신곡동", "용현동", "민락동", "낙양동", "자일동", "금오동", "가능동", "녹양동", "고산동", "산곡동"] },
       yeoncheon: { name: "연천군", dongs: ["연천읍", "전곡읍", "군남면", "청산면", "백학면", "미산면", "왕징면", "신서면", "중면", "장남면"] },
       gapyeong: { name: "가평군", dongs: ["가평읍", "설악면", "청평면", "상면", "조종면", "북면"] },
-      yangpyeong: { name: "양평군", dongs: ["양평읍", "강상면", "강하면", "양서면", "옥천면", "서종면", "단월면", "청운면", "양동면", "지평면", "용문면", "개군면"] }
-    }
+      yangpyeong: { name: "양평군", dongs: ["양평읍", "강상면", "강하면", "양서면", "옥천면", "서종면", "단월면", "청운면", "양동면", "지평면", "용문면", "개군면"] },
+    },
   },
   incheon: {
     name: "인천광역시",
@@ -97,70 +100,73 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
       seohae: { name: "서해구 (서구)", dongs: ["검암경서동", "연희동", "청라1동", "청라2동", "청라3동", "가정동", "신현원창동", "석남동", "가좌동"] },
       geomdan: { name: "검단구", dongs: ["검단동", "불로대곡동", "원당동", "당하동", "오류왕길동", "마전동", "아라동", "금곡동"] },
       ganghwa: { name: "강화군", dongs: ["강화읍", "선원면", "불은면", "길상면", "화도면", "양도면", "내가면", "하점면", "양사면", "송해면", "교동면", "삼산면", "서도면"] },
-      ongjin: { name: "옹진군", dongs: ["북도면", "연평면", "백령면", "대청면", "덕적면", "자월면", "영흥면"] }
-    }
-  }
+      ongjin: { name: "옹진군", dongs: ["북도면", "연평면", "백령면", "대청면", "덕적면", "자월면", "영흥면"] },
+    },
+  },
 };
 
 const initialShops = [
   {
     id: 1,
-    name: "한국미녀테라피",
+    name: "한국미인테라피",
     desc: "서울·경기·인천 전지역 신속 매칭, 정성 가득한 프리미엄 감성 바디 테라피 & 1:1 맞춤 케어",
-    phone: "0507-1280-3299",
+    phone: "0507-1280-3140",
     price: "90,000원부터~",
-    image: "/shop1.jpg"
+    image: "/shop1.jpg",
   },
   {
     id: 2,
     name: "오늘밤테라피",
     desc: "최고급 천연 아로마 오일 블렌딩, 지친 일상을 깨우는 고품격 프라이빗 힐링 바디 테라피 전문",
-    phone: "0507-1280-3191",
+    phone: "0507-1280-3199",
     price: "60,000원부터~",
-    image: "/shop2.jpg"
+    image: "/shop2.jpg",
   },
   {
     id: 3,
     name: "주주홈타이",
     desc: "재방문율 1위, 철저한 위생 관리와 숙련된 테라피스트의 정통 바디 릴렉싱 프로그램",
-    phone: "0507-1280-3180",
+    phone: "0507-1280-3197",
     price: "60,000원부터~",
-    image: "/shop3.jpg"
+    image: "/shop3.jpg",
   },
   {
     id: 4,
     name: "한국골든테라피",
     desc: "전문 테라피스트의 VIP 집중 피로회복 솔루션, 수도권 어디서나 편안하게 만나는 맞춤 힐링",
-    phone: "0507-1280-3361",
+    phone: "0507-1280-3360",
     price: "60,000원부터~",
-    image: "/shop4.jpg"
+    image: "/shop4.jpg",
   },
   {
     id: 5,
     name: "퀸즈홈테라피",
     desc: "수도권 전역 빠른 안내, 검증된 전문 매니저의 힐링 테라피 & 프리미엄 바디 밸런스 프로그램",
-    phone: "0507-1280-3222",
+    phone: "0507-1280-3296",
     price: "60,000원부터~",
-    image: "/shop5.jpg"
-  }
+    image: "/shop5.jpg",
+  },
 ];
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="bg-neutral-900/70 rounded-2xl border border-white/5 overflow-hidden transition-colors">
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full p-4 text-left flex justify-between items-center font-bold text-sm text-gray-200 hover:text-amber-400 transition-colors"
       >
         <span className="flex items-center gap-2">
           <span className="text-amber-400">Q.</span> {question}
         </span>
-        <span className="text-amber-400 font-extrabold text-lg">{isOpen ? "−" : "+"}</span>
+        <span className="text-amber-400 font-extrabold text-lg">
+          {isOpen ? "−" : "+"}
+        </span>
       </button>
       {isOpen && (
         <div className="px-4 pb-4 text-xs text-gray-300 leading-relaxed border-t border-white/5 pt-3 bg-black/40">
-          <span className="text-amber-400 font-bold">A. </span>{answer}
+          <span className="text-amber-400 font-bold">A. </span>
+          {answer}
         </div>
       )}
     </div>
@@ -193,7 +199,6 @@ export default function MainClientUI() {
     setSelectedDong("");
   };
 
-  // 🌟 구/동 디렉토리 구조로 즉시 연결
   const handleSearch = () => {
     if (!selectedDistrict) {
       alert("원하시는 지역(구/시/군)을 먼저 선택해주세요!");
@@ -201,30 +206,30 @@ export default function MainClientUI() {
     }
     const districtObj = regionData[selectedRegion]?.districts[selectedDistrict];
     const districtName = districtObj ? districtObj.name : selectedDistrict;
-    
-    // 동이 선택되어 있으면 /[region]/[district]/[dong] 으로 이동
-    const targetUrl = selectedDong 
+
+    const targetUrl = selectedDong
       ? `/${selectedRegion}/${encodeURIComponent(districtName)}/${encodeURIComponent(selectedDong)}`
       : `/${selectedRegion}/${encodeURIComponent(districtName)}`;
-    
+
     window.location.href = targetUrl;
   };
 
   const currentDistricts = regionData[selectedRegion]?.districts || {};
-  const currentDongs = selectedDistrict && currentDistricts[selectedDistrict] ? currentDistricts[selectedDistrict].dongs : [];
+  const currentDongs =
+    selectedDistrict && currentDistricts[selectedDistrict]
+      ? currentDistricts[selectedDistrict].dongs
+      : [];
 
   return (
     <div className="bg-[#070709] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
-      
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
-        
         {/* 상단 메인 배너 */}
         <section className="text-center my-2">
           <div className="overflow-hidden rounded-3xl border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.12)] relative h-60 md:h-72 flex items-center justify-center p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0d]">
             <div className="absolute inset-0 z-0">
-              <img 
-                src="/banner.jpg" 
-                alt="메트로힐 메인 배너" 
+              <img
+                src="/banner.jpg"
+                alt="케어존마사지 메인 배너"
                 className="w-full h-full object-cover filter brightness-[0.4] scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -235,35 +240,39 @@ export default function MainClientUI() {
                 수도권 힐링 테라피 큐레이션 플랫폼
               </span>
               <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight drop-shadow-lg">
-                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">프리미엄 바디 웰니스 가이드</span>
+                서울·경기·인천{" "}
+                <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">
+                  케어존마사지 프리미엄 바디 웰니스 가이드
+                </span>
               </h1>
               <p className="text-gray-200 text-xs md:text-sm font-medium max-w-lg mx-auto leading-relaxed drop-shadow">
-                엄선된 전문 테라피스트들의 1:1 맞춤 바디 릴렉싱 프로그램을 메트로힐에서 손쉽게 비교하고 확인하세요.
+                엄선된 전문 테라피스트들의 1:1 맞춤 바디 릴렉싱 프로그램을 케어존마사지에서 손쉽게 비교하고 확인하세요.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 🌟 메인 추천 제휴 샵 (이동 링크 제거, 전화연결만 작동) */}
+        {/* 메인 추천 제휴 샵 */}
         <section className="space-y-6">
           <div className="text-center mb-4">
-            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">RECOMMENDED PARTNERS</p>
+            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">
+              RECOMMENDED PARTNERS
+            </p>
             <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 메트로힐 베스트 추천 제휴 샵
+              🏆 케어존마사지 베스트 추천 제휴 샵
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {shops.map((lShop) => (
-              <div 
-                key={lShop.id} 
+              <div
+                key={lShop.id}
                 className="bg-[#111114] border border-amber-500/20 rounded-2xl p-4 flex gap-4 items-center shadow-md"
               >
-                {/* ❌ 샵 상세 이동 링크를 아예 두지 않음 */}
-                <img 
-                  src={lShop.image} 
-                  alt={lShop.name} 
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 flex-shrink-0" 
+                <img
+                  src={lShop.image}
+                  alt={lShop.name}
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 flex-shrink-0"
                 />
 
                 <div className="flex-1 min-w-0">
@@ -274,9 +283,11 @@ export default function MainClientUI() {
                     {lShop.desc}
                   </p>
                   <div className="mt-2.5 flex items-center justify-between">
-                    <span className="text-xs font-black text-amber-400">{lShop.price}</span>
-                    <a 
-                      href={`tel:${lShop.phone.replace(/-/g, "")}`} 
+                    <span className="text-xs font-black text-amber-400">
+                      {lShop.price}
+                    </span>
+                    <a
+                      href={`tel:${lShop.phone.replace(/-/g, "")}`}
                       className="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow transition-colors active:scale-95 flex items-center gap-1"
                     >
                       <span>📞</span> 전화연결
@@ -302,10 +313,12 @@ export default function MainClientUI() {
 
             <div className="space-y-3.5">
               <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">1단계: 광역 시·도 선택</span>
-                <select 
-                  value={selectedRegion} 
-                  onChange={handleRegionChange} 
+                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">
+                  1단계: 광역 시·도 선택
+                </span>
+                <select
+                  value={selectedRegion}
+                  onChange={handleRegionChange}
                   className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
                 >
                   {Object.keys(regionData).map((key) => (
@@ -317,13 +330,17 @@ export default function MainClientUI() {
               </div>
 
               <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">2단계: 구·시·군 선택</span>
-                <select 
-                  value={selectedDistrict} 
-                  onChange={handleDistrictChange} 
+                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">
+                  2단계: 구·시·군 선택
+                </span>
+                <select
+                  value={selectedDistrict}
+                  onChange={handleDistrictChange}
                   className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
                 >
-                  <option value="" className="bg-[#1c1c1f] text-gray-400">구 / 시 / 군을 선택해주세요</option>
+                  <option value="" className="bg-[#1c1c1f] text-gray-400">
+                    구 / 시 / 군을 선택해주세요
+                  </option>
                   {Object.keys(currentDistricts).map((dKey) => (
                     <option key={dKey} value={dKey} className="bg-[#1c1c1f] text-white">
                       {currentDistricts[dKey].name}
@@ -333,14 +350,18 @@ export default function MainClientUI() {
               </div>
 
               <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">3단계: 동 선택 (세부 필터)</span>
-                <select 
-                  value={selectedDong} 
-                  onChange={(e) => setSelectedDong(e.target.value)} 
+                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">
+                  3단계: 동 선택 (세부 필터)
+                </span>
+                <select
+                  value={selectedDong}
+                  onChange={(e) => setSelectedDong(e.target.value)}
                   disabled={!selectedDistrict}
                   className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-medium p-3.5 rounded-xl border border-amber-500/30 disabled:opacity-30 transition-colors shadow-inner"
                 >
-                  <option value="" className="bg-[#1c1c1f] text-gray-400">동 전체 보기</option>
+                  <option value="" className="bg-[#1c1c1f] text-gray-400">
+                    동 전체 보기
+                  </option>
                   {currentDongs.map((dong, idx) => (
                     <option key={idx} value={dong} className="bg-[#1c1c1f] text-white">
                       {dong}
@@ -349,7 +370,7 @@ export default function MainClientUI() {
                 </select>
               </div>
 
-              <button 
+              <button
                 onClick={handleSearch}
                 className="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_25px_rgba(245,158,11,0.35)] mt-3 cursor-pointer transform active:scale-[0.98]"
               >
@@ -359,32 +380,69 @@ export default function MainClientUI() {
           </div>
         </section>
 
+        {/* 🌟 네이버 로봇 크롤링 누락 방지용 주요 지역 내부 링크 (SEO 필수 요소) */}
+        <section className="bg-[#0b0b0e] border border-white/5 p-6 rounded-3xl space-y-4">
+          <div className="border-b border-white/10 pb-3">
+            <h3 className="text-sm font-bold text-amber-400 flex items-center gap-1.5">
+              <span>🗺️</span> 수도권 주요 지역별 바로가기
+            </h3>
+            <p className="text-[11px] text-gray-400 mt-1">
+              원하시는 지역을 선택하시면 해당 지역의 추천 샵 목록을 바로 확인하실 수 있습니다.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 pt-2">
+            {Object.entries(regionData).map(([rKey, rVal]) =>
+              Object.entries(rVal.districts).slice(0, 10).map(([dKey, dVal]) => (
+                <Link
+                  key={dKey}
+                  href={`/${rKey}/${encodeURIComponent(dVal.name)}`}
+                  className="text-xs bg-neutral-900/90 text-gray-300 hover:text-amber-400 hover:border-amber-500/40 px-3 py-1.5 rounded-lg border border-white/5 transition-colors"
+                >
+                  {dVal.name} 마사지
+                </Link>
+              ))
+            )}
+          </div>
+        </section>
+
         {/* 가이드 섹션 */}
         <section className="bg-[#0f0f13] border border-amber-500/20 p-6 md:p-8 rounded-3xl space-y-6">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE GUIDE</span>
-            <h3 className="text-xl font-black text-white mt-1">메트로힐 안심 이용 가이드</h3>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
+              SERVICE GUIDE
+            </span>
+            <h3 className="text-xl font-black text-white mt-1">
+              케어존마사지 안심 이용 가이드
+            </h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 1</span>
               <h4 className="font-bold text-white mt-1">지역 확인</h4>
-              <p className="text-xs text-gray-400 mt-1">원하시는 수도권 주요 지역을 선택합니다.</p>
+              <p className="text-xs text-gray-400 mt-1">
+                원하시는 수도권 주요 지역을 선택합니다.
+              </p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 2</span>
               <h4 className="font-bold text-white mt-1">프로그램 비교</h4>
-              <p className="text-xs text-gray-400 mt-1">타이, 아로마, 스웨디시 코스를 확인합니다.</p>
+              <p className="text-xs text-gray-400 mt-1">
+                타이, 아로마, 스웨디시 코스를 확인합니다.
+              </p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 3</span>
               <h4 className="font-bold text-white mt-1">직접 상담</h4>
-              <p className="text-xs text-gray-400 mt-1">전화 버튼으로 샵과 직접 일정을 소통합니다.</p>
+              <p className="text-xs text-gray-400 mt-1">
+                전화 버튼으로 샵과 직접 일정을 소통합니다.
+              </p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 4</span>
               <h4 className="font-bold text-white mt-1">맞춤 케어</h4>
-              <p className="text-xs text-gray-400 mt-1">전문 테라피스트의 프라이빗 힐링을 누립니다.</p>
+              <p className="text-xs text-gray-400 mt-1">
+                전문 테라피스트의 프라이빗 힐링을 누립니다.
+              </p>
             </div>
           </div>
         </section>
@@ -392,8 +450,12 @@ export default function MainClientUI() {
         {/* 이용 후기 */}
         <section className="space-y-4">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">USER REVIEWS</span>
-            <h3 className="text-xl font-black text-white mt-1">실제 이용 고객 솔직 후기</h3>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
+              USER REVIEWS
+            </span>
+            <h3 className="text-xl font-black text-white mt-1">
+              실제 이용 고객 솔직 후기
+            </h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-[#101014] p-5 rounded-2xl border border-white/5 space-y-2">
@@ -408,7 +470,7 @@ export default function MainClientUI() {
             <div className="bg-[#101014] p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-amber-400 font-black text-sm">★★★★★ 5.0</span>
-                <span className="text-[11px] text-gray-505">인천 송도 이용자</span>
+                <span className="text-[11px] text-gray-500">인천 송도 이용자</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
                 &quot;플랫폼에 등록된 정보가 투명해서 좋았고 상담도 친절했습니다. 번거롭게 찾아다닐 필요 없이 편리하게 이용했습니다.&quot;
@@ -420,37 +482,42 @@ export default function MainClientUI() {
         {/* 자주 묻는 질문 */}
         <section className="space-y-4">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ</span>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
+              FAQ
+            </span>
             <h3 className="text-xl font-black text-white mt-1">자주 묻는 질문</h3>
           </div>
           <div className="space-y-3">
-            <FaqItem 
+            <FaqItem
               question="예약 및 상담은 어떻게 진행되나요?"
-              answer="메트로힐에 등록된 각 제휴 업체의 전화연결 버튼을 통해 샵으로 직접 연결되며, 코스 및 시간을 바로 조율하실 수 있습니다."
+              answer="케어존마사지에 등록된 각 제휴 업체의 전화연결 버튼을 통해 샵으로 직접 연결되며, 코스 및 시간을 바로 조율하실 수 있습니다."
             />
-            <FaqItem 
+            <FaqItem
               question="수도권 전 지역 이용이 가능한가요?"
               answer="서울 25개 구, 경기도 31개 시·군, 인천 전역의 주요 권역별로 등록된 제휴 샵 정보를 편리하게 확인하실 수 있습니다."
             />
           </div>
         </section>
-
       </main>
 
       {/* 푸터 */}
       <footer className="bg-[#040406] border-t border-white/10 py-10 text-center text-gray-500 text-xs mt-auto">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
           <div>
-            <a 
-              href="tel:0507-1280-3344" 
+            <a
+              href="tel:0507-1280-3344"
               className="inline-flex items-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold px-4 py-2 rounded-xl border border-amber-500/30 hover:border-amber-400 transition-all text-xs shadow-md"
             >
-              <span>🤝</span> 메트로힐 제휴 문의 (0507-1280-3344)
+              <span>🤝</span> 케어존마사지 제휴 문의 (0507-1280-3344)
             </a>
           </div>
 
-          <p className="text-gray-400 font-medium">메트로힐은 건전하고 쾌적한 프리미엄 바디 테라피 제휴 정보를 제공하는 웰니스 안내 플랫폼입니다.</p>
-          <p className="text-[11px] text-gray-600">COPYRIGHT &copy; METROHEAL ALL RIGHTS RESERVED.</p>
+          <p className="text-gray-400 font-medium">
+            케어존마사지는 건전하고 쾌적한 프리미엄 바디 테라피 제휴 정보를 제공하는 웰니스 안내 플랫폼입니다.
+          </p>
+          <p className="text-[11px] text-gray-600">
+            COPYRIGHT &copy; CAREZONE MASSAGE ALL RIGHTS RESERVED.
+          </p>
         </div>
       </footer>
     </div>

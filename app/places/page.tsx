@@ -2,17 +2,26 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "수도권 미식 & 힐링 쉼터 가이드 | 메트로힐",
+  title: "수도권 미식 & 힐링 쉼터 가이드 | 케어존마사지",
   description:
-    "서울, 경기, 인천 주요 도심 내 엄선된 미식 명소와 안락한 휴식 공간 가이드. 하루의 피로를 풀고 여유를 더하는 웰니스 플레이스를 메트로힐에서 확인하세요.",
+    "서울, 경기, 인천 주요 도심 내 엄선된 미식 명소와 안락한 휴식 공간 가이드. 하루의 피로를 풀고 여유를 더하는 웰니스 플레이스를 케어존마사지에서 확인하세요.",
+  keywords: [
+    "케어존마사지",
+    "수도권힐링플레이스",
+    "서울휴식공간",
+    "경기힐링카페",
+    "인천미식명소",
+    "도심속쉼터",
+    "웰니스플레이스",
+  ],
   alternates: {
-    canonical: "https://metroheal.netlify.app/places",
+    canonical: "https://carezone-massage.netlify.app/places",
   },
   openGraph: {
-    title: "수도권 힐링 플레이스 & 편안한 휴식 공간 가이드 | 메트로힐",
+    title: "수도권 힐링 플레이스 & 편안한 휴식 공간 가이드 | 케어존마사지",
     description: "서울·경기·인천 도심 속 쾌적한 쉼터와 프라이빗 미식 공간 정보 안내.",
-    url: "https://metroheal.netlify.app/places",
-    siteName: "메트로힐",
+    url: "https://carezone-massage.netlify.app/places",
+    siteName: "케어존마사지",
     locale: "ko_KR",
     type: "website",
   },
@@ -63,10 +72,34 @@ const recommendedPlaces: PlaceItem[] = [
 ];
 
 export default function PlacesPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: recommendedPlaces.map((place, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      item: {
+        "@type": "Place",
+        name: place.name,
+        description: place.desc,
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: place.region,
+          addressCountry: "KR",
+        },
+      },
+    })),
+  };
+
   return (
     <div className="bg-[#070709] text-gray-100 min-h-screen py-10 px-4 font-sans selection:bg-amber-500 selection:text-black">
+      {/* 구조화 데이터 스크립트 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="max-w-4xl mx-auto space-y-10">
-        
         {/* 상단 타이틀 배너 */}
         <div className="text-center space-y-3">
           <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
@@ -95,21 +128,25 @@ export default function PlacesPage() {
           {recommendedPlaces.map((place) => (
             <div
               key={place.id}
-              className="bg-[#111114] border border-white/10 hover:border-amber-500/40 p-5 rounded-2xl space-y-3 transition-all group"
+              className="bg-[#111114] border border-white/10 hover:border-amber-500/40 p-5 rounded-2xl space-y-3 transition-all group flex flex-col justify-between"
             >
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-amber-400 font-bold bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
-                  {place.region}
-                </span>
-                <span className="text-gray-400 text-[11px] font-semibold">{place.category}</span>
-              </div>
-              <div>
-                <h2 className="text-base font-black text-white group-hover:text-amber-300 transition-colors">
-                  {place.name}
-                </h2>
-                <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
-                  {place.desc}
-                </p>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="text-amber-400 font-bold bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
+                    {place.region}
+                  </span>
+                  <span className="text-gray-400 text-[11px] font-semibold">
+                    {place.category}
+                  </span>
+                </div>
+                <div>
+                  <h2 className="text-base font-black text-white group-hover:text-amber-300 transition-colors">
+                    {place.name}
+                  </h2>
+                  <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+                    {place.desc}
+                  </p>
+                </div>
               </div>
               <div className="pt-2 border-t border-white/5 text-[11px] text-gray-500">
                 {place.tag}
@@ -118,16 +155,21 @@ export default function PlacesPage() {
           ))}
         </div>
 
-        {/* 하단 홈 이동 버튼 */}
-        <div className="text-center pt-4">
+        {/* 하단 이동 & CTA 버튼 */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold text-xs px-5 py-3 rounded-2xl border border-amber-500/30 hover:border-amber-400 transition-all shadow-md"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold text-xs px-5 py-3 rounded-2xl border border-amber-500/30 transition-all shadow-md"
           >
-            <span>🏠</span> 메트로힐 메인으로 돌아가기
+            <span>🏠</span> 케어존마사지 메인으로
           </Link>
+          <a
+            href="tel:0507-1280-3344"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs px-6 py-3 rounded-2xl shadow-md transition-all active:scale-95"
+          >
+            📞 제휴 및 입점 문의
+          </a>
         </div>
-
       </div>
     </div>
   );

@@ -1,29 +1,43 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import NavigationHeader from "./NavigationHeader";
-
-const SITE_URL = "https://metroheal.netlify.app";
-const SITE_NAME = "메트로힐";
+// app/layout.tsx
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL('https://carezone-massage.netlify.app'),
   title: {
-    default: `${SITE_NAME} | 서울·경기·인천 프리미엄 힐링 & 바디 테라피 플랫폼`,
-    template: `%s | ${SITE_NAME}`,
+    default: '경기·인천·서울 출장 힐링케어 마사지 할인 예약 플랫폼 | 케어존마사지 ',
+    template: '%s | 케어존마사지',
   },
   description:
-    "서울, 경기, 인천 전 지역 엄선된 웰니스 바디 케어, 아로마, 스웨디시 힐링 샵 정보. 내 주변 테라피 샵 위치 및 코스 정보를 메트로힐에서 간편하게 확인하세요.",
-  alternates: {
-    canonical: SITE_URL,
-  },
+    '서울, 인천, 경기 출장마사지, 스웨디시, 타이, 아로마 힐링 케어 정보 및 최저가 제휴 할인 플랫폼 케어존마사지입니다.',
+  keywords: [
+    '케어존마사지',
+    '서울마사지',
+    '경기마사지',
+    '인천마사지',
+    '스웨디시',
+    '타이마사지',
+    '아로마마사지',
+    '마사지할인',
+  ],
+  authors: [{ name: '케어존마사지' }],
+  creator: '케어존마사지',
   openGraph: {
-    title: `${SITE_NAME} | 수도권 No.1 프리미엄 힐링 & 바디 케어 가이드`,
+    type: 'website',
+    locale: 'ko_KR',
+    url: 'https://carezone-massage.netlify.app',
+    siteName: '케어존마사지',
+    title: '경기·인천·서울 출장 힐링케어 마사지 할인 예약 플랫폼 | 케어존마사지 ',
     description:
-      "서울, 경기, 인천 전역의 검증된 전문 테라피·에스테틱 제휴 정보를 한눈에 비교하고 확인해보세요.",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    locale: "ko_KR",
-    type: "website",
+      '서울, 인천, 경기 출장마사지, 스웨디시, 타이, 아로마 힐링 케어 정보 및 최저가 제휴 할인 정보 제공.',
+    images: [
+      {
+        url: '/og-image.png', // public/og-image.png (권장: 1200x630px)
+        width: 1200,
+        height: 630,
+        alt: '케어존마사지',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -31,29 +45,27 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
     },
   },
+  // 네이버 서치어드바이저 소유권 확인 태그 (발급받은 코드 입력)
   verification: {
     other: {
-      "naver-site-verification": "c70185582dc09b3823cadfca853aa96f4aac207b",
+      'naver-site-verification': '네이버에서_발급받은_HTML_메타_코드',
     },
+  },
+  alternates: {
+    canonical: 'https://carezone-massage.netlify.app',
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ko">
-      <body>
-        <NavigationHeader />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

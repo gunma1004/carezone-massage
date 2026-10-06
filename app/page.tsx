@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import MainClientUI from "./MainClientUI";
 
 export const metadata: Metadata = {
-  title: "서울·인천·경기 출장 프리미엄 마사지 & 바디 테라피 할인 플랫폼|케어존마사지 ",
+  title: "서울·인천·경기 출장 프리미엄 마사지&테라피 할인 플랫폼|케어존마사지 ",
   description:
-    "서울, 인천, 경기 출장마사지 타이, 아로마, 스웨디시 웰니스 테라피 제휴 정보 및 최저가 할인을 편리하게 확인하세요.",
+    "서울, 인천, 경기 출장마사지 타이,아로마,스웨디시 웰니스 제휴 정보 및 최저가 할인을 편리하게 확인하세요.",
   keywords: [
     "케어존마사지",
     "서울출장 프리미엄 마사지",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://carezone-massage.netlify.app",
   },
   openGraph: {
-    title: "서울·인천·경기 출장 프리미엄 마사지 & 바디 테라피 할인 플랫폼|케어존마사지 ",
+    title: "서울·인천·경기 출장 프리미엄 마사지&테라피 할인 플랫폼|케어존마사지 ",
     description:
       "서울, 인천, 경기 출장마사지 웰니스 테라피 제휴 정보를 비교하고 바로 확인해보세요.",
     url: "https://carezone-massage.netlify.app",

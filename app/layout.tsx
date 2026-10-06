@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   // 네이버 서치어드바이저 소유권 확인 태그 (발급받은 코드 입력)
   verification: {
     other: {
-      'naver-site-verification': '네이버에서_발급받은_HTML_메타_코드',
+      'naver-site-verification': '9992595a7b731f47f23a2ac97bd1c3c1f93cb664',
     },
   },
   alternates: {

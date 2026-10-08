@@ -1,4 +1,3 @@
-// app/MainClientUI.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -380,7 +379,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 🌟 네이버 로봇 크롤링 누락 방지용 주요 지역 내부 링크 (SEO 필수 요소) */}
+        {/* 🌟 네이버 로봇 크롤링 누락 방지용 주요 지역 내부 링크 */}
         <section className="bg-[#0b0b0e] border border-white/5 p-6 rounded-3xl space-y-4">
           <div className="border-b border-white/10 pb-3">
             <h3 className="text-sm font-bold text-amber-400 flex items-center gap-1.5">
@@ -402,6 +401,124 @@ export default function MainClientUI() {
                 </Link>
               ))
             )}
+          </div>
+        </section>
+
+        {/* 📚 [메인 페이지 전용: 네이버 C-Rank / D.I.A. 상위 노출용 3,000자 전문 웰니스 인사이트] */}
+        <section className="bg-[#0e0e12] p-6 sm:p-10 rounded-3xl border border-white/10 space-y-10 text-gray-300 leading-relaxed text-xs sm:text-sm">
+          <div className="border-b border-white/10 pb-5">
+            <span className="text-amber-400 font-extrabold text-xs tracking-widest block uppercase mb-1">
+              CAREZONE WELLNESS ESSENTIALS & THEORY
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-white">
+              도심 생활 속 신체 밸런스 회복과 지속 가능한 바디 테라피 가이드
+            </h2>
+            <p className="text-gray-400 text-xs mt-1.5">
+              자율신경계 균형, 근막 이완의 과학적 원리, 라이프스타일 맞춤 프로그램 선택 및 프라이빗 케어 환경 분석
+            </p>
+          </div>
+
+          {/* 챕터 1 */}
+          <div className="space-y-3.5">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400 font-black">1.</span> 현대인의 고정 좌식 생활과 만성 근막 긴장의 병리학적 기전
+            </h3>
+            <p>
+              현대 사회의 근로 환경은 디지털 디바이스의 보급과 함께 급격한 정적 고정화를 겪고 있습니다. 서울과 수도권의 수많은 직장인들은 하루 평균 8시간 이상 모니터 앞에 앉아 생활하며, 이 과정에서 경추 굴곡과 흉추 후만이 결합된 전방 두부 자세를 취하게 됩니다. 머리의 하중이 1인치 앞으로 기울어질 때마다 목덜미 후두하근과 상부 승모근, 견갑거근에 가해지는 역학적 부하는 체중 대비 최대 4배까지 증가합니다.
+            </p>
+            <p>
+              이러한 만성적 부하는 근섬유 내 미세 모세혈관의 혈류 흐름을 압박하여 허혈성 상태를 유발합니다. 혈액 공급이 원활하지 못한 근육 조직 내에는 젖산, 피루브산 등 대사 노폐물이 축적되며, 이는 근막 통증 유발점(Trigger Point)의 형성을 가속화합니다. 결과적으로 어깨 윗선의 지속적인 뻐근함, 견갑골 내측의 결림, 긴장성 두통과 만성 피로로 이어지는 악순환이 고착화됩니다.
+            </p>
+            <p>
+              정기적인 바디 컨디셔닝은 단순한 표면 마찰을 넘어 근육의 기시부와 정지부를 따라 경직된 근막을 넓은 면적으로 스트레칭하고 연부 조직의 온도를 높여 혈류량을 증가시키는 데 목적이 있습니다. 정상적인 혈액 순환이 회복되면 굳어있던 근섬유가 이완되고 자율신경계의 과도한 흥분이 진정되어 신체 본래의 유연성과 가동 범위를 되찾게 됩니다.
+            </p>
+          </div>
+
+          {/* 챕터 2 */}
+          <div className="space-y-3.5">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400 font-black">2.</span> 자율신경계 불균형과 심신 릴렉싱의 상호작용
+            </h3>
+            <p>
+              과중한 업무 스트레스와 불규칙한 생활 리듬은 인체의 교감신경계를 만성 흥분 상태로 몰아넣습니다. 교감신경의 지속적인 과활성화는 스트레스 호르몬인 코르티솔과 아드레날린 분비를 촉진하고, 심박수 증가와 말초 혈관 수축을 야기하여 신체를 항시적인 전투 및 도피 상태(Fight or Flight)로 유지시킵니다. 이러한 상태가 장기화되면 야간 숙면을 방해하는 수면 장애, 소화 흡수 장애, 만성 무기력증이 동반됩니다.
+            </p>
+            <p>
+              숙련된 테라피스트에 의한 균일하고 차분한 압력 자극은 피부 감각 수용기 중 마이스너 소체와 파치니 소체를 자극하여 뇌로 전달되는 감각 신호를 안정화시킵니다. 이는 부교감신경계를 활성화하여 심장 박동을 안정시키고 혈관을 확장시키며, 체내 행복 호르몬인 옥시토신과 세로토닌의 분비를 촉진합니다.
+            </p>
+            <p>
+              신체가 진정한 이완 상태에 도달하면 뇌파는 각성 상태인 베타파에서 깊은 안정 상태인 알파파 및 세타파로 전환됩니다. 이는 단순한 신체적 편안함을 넘어 뇌의 인지적 피로를 리셋하고 면역계 세포의 재생 활동을 촉진하는 근본적인 힐링 환경을 조성합니다.
+            </p>
+          </div>
+
+          {/* 챕터 3 */}
+          <div className="space-y-3.5">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400 font-black">3.</span> 프로그램별 물리적 기전 비교와 맞춤형 선택 가이드
+            </h3>
+            <p>
+              전문 바디 웰니스 프로그램은 사용하는 매개체와 물리적 자극의 깊이에 따라 뚜렷한 기능적 특성을 가집니다. 이용자의 당일 체력 상태와 피로 원인에 맞추어 올바른 코스를 선택하는 것이 중요합니다.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 my-3">
+              <div className="bg-black/50 p-4 rounded-2xl border border-white/5 space-y-1.5">
+                <h4 className="font-bold text-amber-400 text-xs sm:text-sm">클래식 건식 스트레칭 (타이 케어)</h4>
+                <p className="text-gray-400 text-[11px] sm:text-xs">
+                  오일을 사용하지 않고 매트 위에서 진행되는 정통 기법입니다. 수기 압박과 요가 형태의 수동적 관절 신전 운동이 결합되어 굳어있는 햄스트링, 고관절 굴곡근, 척추 기립근의 운동 가동 범위를 물리적으로 넓혀줍니다. 평소 활동량이 적어 몸이 뻣뻣하고 시원한 관절 이완을 원하는 분에게 적합합니다.
+                </p>
+              </div>
+              <div className="bg-black/50 p-4 rounded-2xl border border-white/5 space-y-1.5">
+                <h4 className="font-bold text-amber-400 text-xs sm:text-sm">스웨디시 감성 바디 테라피</h4>
+                <p className="text-gray-400 text-[11px] sm:text-xs">
+                  식물성 베이스 오일을 도포하여 마찰 저항을 최소화한 상태에서 심장 방향으로 부드럽게 밀어 올리는 유러피언 테크닉입니다. 피부 표층의 미세 순환을 촉진하고 통증 없이 림프절을 자극하여 부종 완화와 깊은 정신적 안도감을 선사합니다. 강한 압박에 거부감이 있는 분에게 추천됩니다.
+                </p>
+              </div>
+              <div className="bg-black/50 p-4 rounded-2xl border border-white/5 space-y-1.5">
+                <h4 className="font-bold text-amber-400 text-xs sm:text-sm">에센셜 아로마 림프 테라피</h4>
+                <p className="text-gray-400 text-[11px] sm:text-xs">
+                  라벤더, 유칼립투스, 베르가못 등 식물에서 추출한 순수 에센셜 오일의 후각적 아로마콜로지 효과를 접목한 기법입니다. 피부 보습 장벽을 보호하는 동시에 피하 지방층 주변 림프액의 배농을 유도하여 붓기를 개선하고 환절기 피부 건조증을 예방합니다.
+                </p>
+              </div>
+              <div className="bg-black/50 p-4 rounded-2xl border border-white/5 space-y-1.5">
+                <h4 className="font-bold text-amber-400 text-xs sm:text-sm">심부 근막 집중 딥티슈 케어</h4>
+                <p className="text-gray-400 text-[11px] sm:text-xs">
+                  표층 근육을 넘어 뼈와 관절에 맞닿아 있는 심부 근막의 단단한 매듭을 팔꿈치와 체중을 이용해 서서히 압박하는 기법입니다. 고질적인 목 결림이나 허리 통증을 유발하는 만성 유착 부위를 분리하여 깊은 속근육의 피로를 근본적으로 해소합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 챕터 4 */}
+          <div className="space-y-3.5">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400 font-black">4.</span> 프라이빗 1인 케어 환경이 선사하는 심리·시간적 효율성
+            </h3>
+            <p>
+              전통적인 웰니스 서비스는 고객이 직접 매장을 방문하는 오프라인 중심이었으나, 현대 도시 생활에서는 이동 자체에 소모되는 물리적·정신적 비용이 상당합니다. 번화가의 교통 체증, 주차 공간 확보의 어려움, 대기 시간, 타인과의 대면 접촉은 휴식을 취하러 가는 과정 자체를 또 다른 피로 원인으로 만들 수 있습니다.
+            </p>
+            <p>
+              개인 자택이나 호텔 객실 등 독립된 사적 공간에서 진행되는 프라이빗 케어는 외부의 소음과 자극을 원천 차단하여 부교감신경이 방해 없이 활성화될 수 있는 환경을 제공합니다. 관리사가 방문하여 세션을 진행함으로써 고객은 이동에 필요한 에너지를 보존할 수 있으며, 관리가 종료된 직후 환복이나 귀가 이동 없이 온전히 자신의 침상에서 깊은 숙면으로 전환할 수 있습니다.
+            </p>
+            <p>
+              이러한 환경적 연속성은 근육이 따뜻하게 이완된 상태에서 찬 바람이나 외부 온도 변화에 노출되어 다시 수축하는 현상을 예방합니다. 교대 근무, 야간 업무, 혹은 바쁜 주말 일정을 소화하는 현대인들에게 시간 절약과 완전한 휴식을 동시에 보장하는 스마트한 자기 관리 솔루션입니다.
+            </p>
+          </div>
+
+          {/* 챕터 5 */}
+          <div className="space-y-3.5">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400 font-black">5.</span> 안전하고 신뢰할 수 있는 웰니스 플랫폼 이용 수칙
+            </h3>
+            <p>
+              투명하고 건강한 힐링 문화를 지속하기 위해 케어존마사지는 모든 제휴 매장과 파트너 샵의 건전성과 운영 수칙을 주기적으로 모니터링합니다. 소비자의 권익 보호와 안전한 세션 진행을 위해 다음 가이드라인을 확인하시기 바랍니다.
+            </p>
+            <ul className="list-disc list-inside space-y-1.5 text-gray-400 pl-2">
+              <li><strong className="text-gray-200">정찰제 요금 준수:</strong> 신뢰할 수 있는 공인 파트너는 불법적인 예약 선입금이나 불투명한 현장 추가금을 요구하지 않으며, 공시된 표준 요금표를 엄격히 준수합니다.</li>
+              <li><strong className="text-gray-200">기저 질환 사전 고지:</strong> 최근 관절 시술을 받았거나 골절 병력, 심혈관계 질환, 임신 중인 경우 세션 전 매니저 및 테라피스트에게 신체 상태를 고지하여 적절한 강도를 조율해야 합니다.</li>
+              <li><strong className="text-gray-200">사후 수분 섭취와 체온 유지:</strong> 관리를 마친 후에는 림프 순환을 통해 체내로 배출된 대사 부산물이 원활히 배설될 수 있도록 미온수를 500ml 이상 섭취하고, 급격한 체온 저하를 방지하기 위해 따뜻한 실내 환경을 유지하시기 바랍니다.</li>
+            </ul>
+          </div>
+
+          <div className="pt-5 border-t border-white/5 text-[11px] text-gray-500">
+            * 본 콘텐츠는 수도권 전역의 건강한 라이프스타일 구축과 올바른 신체 생리학적 테라피 정보 제공을 목적으로 케어존마사지 리서치 팀에 의해 작성 및 검수되었습니다.
           </div>
         </section>
 

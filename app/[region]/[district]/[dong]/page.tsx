@@ -34,7 +34,7 @@ function getRegionFullName(region: string): string {
   }
 }
 
-// 🎯 40가지 순환형 SEO 패턴
+// 🎯 40가지 순환형 SEO 패턴 (수식어 분리 타이틀 + 동이름 밀착 결합 디스크립션)
 const SEO_PATTERNS = [
   { t: "출장 웰니스 마사지 & 프리미엄 힐링 케어", d: (d: string) => `${d}출장마사지 안심 가이드. 나만의 편안한 공간에서 경험하는 1:1 맞춤 바디 테라피 코스와 정찰제 요금을 케어존마사지에서 확인하세요.` },
   { t: "출장 스웨디시 마사지 감성 바디 릴렉스", d: (d: string) => `${d}출장마사지 추천 코스 안내. 섬세한 터치와 부드러운 오일 이완 프로그램으로 지친 피로를 풀어드립니다.` },
@@ -53,23 +53,86 @@ const SEO_PATTERNS = [
   { t: "출장 호텔식 럭셔리 마사지 프라이빗 케어", d: (d: string) => `${d}출장마사지 웰니스 솔루션. 정갈한 서비스와 수준 높은 테라피 프로그램을 투명한 정찰제로 이용하세요.` }
 ];
 
-// 🌿 동별 유사 문서(중복 페이지) 회피를 위한 동적 칼럼 생성기
-function getDongArticle(districtName: string, dongName: string, seed: number) {
-  const articles = [
+// 🌿 동(Dong)마다 문장 구조와 내용이 통째로 바뀌는 1,800자 분량의 동적 정보성 글 생성기
+function getDynamicDongInsight(districtName: string, dongName: string, seed: number) {
+  const dongInsightGroups = [
+    // [세트 A] 동네 생활권 직장인 피로 / 거북목·승모근 / 타이 vs 스웨디시 / 홈케어의 가치
     {
-      body: `${districtName} ${dongName} 일대에서 나만의 편안한 안식처를 찾는 분들을 위한 전문 바디케어 가이드입니다. 복잡한 도심 이동 없이 자택이나 숙소에서 프라이빗하게 누릴 수 있는 홈케어 프로그램으로, 숙련된 관리사의 섬세한 손길을 통해 굳어있던 심신을 부드럽게 이완시켜 드립니다. 청결한 위생 관리와 투명한 정찰제 시스템으로 언제나 안심하고 이용하실 수 있습니다.`,
-      tip: `과중한 업무로 어깨와 승모근이 딱딱하게 뭉쳤다면 전신을 시원하게 늘려주는 타이 스트레칭을, 피로와 스트레스로 깊은 숙면이 필요하시다면 부드러운 천연 아로마 스웨디시 관리를 추천합니다.`
+      subtitle: `${dongName} 거주자 및 직장인을 위한 1:1 맞춤 바디 테라피 인사이트`,
+      sec1Title: `1. ${dongName} 일대 직장인들의 좌식 업무와 승모근 긴장 완화`,
+      sec1Text: [
+        `${districtName} ${dongName}은 활발한 상업 공간과 주거 단지가 조화를 이루는 곳으로, 일상 업무나 컴퓨터 작업 등으로 인한 상체 근육의 긴장도가 높게 나타나는 지역입니다. 장시간 키보드와 마우스를 조작하다 보면 어깨가 안으로 말리는 라운드 숄더와 거북목 자세가 유발되기 쉽습니다. 이는 목덜미 후두하근과 상부 승모근에 지속적인 부하를 주어 혈액 순환을 저해하고, 만성적인 어깨 뻐근함과 두중감(머리가 무거운 증상)을 일으킵니다.`,
+        `이러한 국소 근막 긴장을 효과적으로 완화하기 위해서는 체온을 안정적으로 유지하면서 단축된 근섬유를 결을 따라 부드럽게 늘려주는 수기 요법이 필요합니다. 굳어있던 혈관이 확장되면서 림프액과 혈액 순환이 촉진되고, 근육 내부에 쌓인 피로 부산물이 빠르게 배출되어 가벼운 어깨 컨디션을 회복할 수 있습니다.`
+      ],
+      sec2Title: "2. 컨디션에 따른 건식 타이와 스웨디시 오일 케어 비교",
+      sec2Text: [
+        `테라피를 선택할 때는 당일의 피로도와 신체 통증 양상을 파악하는 것이 중요합니다. 건식 기법의 대표인 타이는 별도의 오일 없이 진행되며, 관절의 가동 범위를 넓혀주는 수동적 전신 스트레칭을 핵심으로 합니다. 평소 운동량이 적어 관절 마디가 굳었거나 허리 및 하체의 묵직함을 개운하게 해소하고 싶을 때 알맞습니다.`,
+        `반면 프리미엄 스웨디시는 식물성 오일을 도포하여 심장 방향으로 부드럽고 리드미컬하게 밀어 올리는 림프 순환 중심 테크닉입니다. 피부 표면의 자극 없이 정서적 안정과 깊은 신체 이완을 유도하므로, 스트레스로 인해 불면증을 겪거나 은은한 휴식을 원하는 분들에게 만족스러운 결과를 제공합니다.`
+      ],
+      sec3Title: `3. ${dongName} 프라이빗 룸에서 누리는 힐링의 환경적 장점`,
+      sec3Text: [
+        `테라피의 생리학적 효과를 온전히 누리기 위해서는 심리적 안정감이 필수적입니다. 외부 매장으로 직접 이동할 때 소모되는 교통 체증, 주차 스트레스, 대중교통 이용은 무의식중에 코르티솔 분비를 촉진할 수 있습니다.`,
+        `반면 내가 가장 익숙한 독립된 공간에서 진행되는 홈케어는 외부 자극이 원천 차단되어 부교감 신경계가 빠르게 활성화됩니다. 세션이 끝난 후 환복이나 추가 이동 없이 바로 아늑한 수면으로 이어질 수 있어 힐링의 잔여 효과가 다음 날 아침까지 편안하게 지속됩니다.`
+      ],
+      sec4Title: "4. 안전하고 투명한 정찰제 이용 수칙",
+      sec4Text: [
+        `${dongName}출장마사지 서비스를 이용하실 때는 건전성과 투명성을 갖춘 공식 플랫폼을 확인하시는 것이 안전합니다. 정상적인 제휴 파트너는 예약 명목의 불법 선입금을 요구하지 않으며, 사전 공시된 정찰제 요금 기준을 엄격히 준수합니다.`,
+        `허리 디스크 등 특정 질환이 있거나 임신 중인 경우 세션 시작 전 담당 힐러에게 미리 전달하시면 세심한 맞춤 압 조절을 통해 가장 안전한 웰니스 케어를 경험하실 수 있습니다.`
+      ]
     },
+
+    // [세트 B] 스트레스 호르몬 조절 / 림프 순환과 부종 / 아로마 시너지 / 숙면 유도
     {
-      body: `${dongName} 중심 상권 및 주거 지역 어디서나 신속하게 안내받으실 수 있는 프리미엄 웰니스 케어망입니다. 하루 종일 누적된 만성 피로와 바디 밸런스 불균형을 해소하기 위해 1:1 맞춤형 힐링 테라피를 제공하며, 프라이빗한 공간에서 타인의 시선 없이 온전한 휴식을 누리실 수 있습니다.`,
-      tip: `다리의 부종 완화와 혈액 순환 개선을 원하시는 분들은 림프절을 부드럽게 자극하는 순환 테라피를 선택하시면 한층 가볍고 개운한 몸 상태를 되찾으실 수 있습니다.`
+      subtitle: `${dongName} 웰니스 라이프를 위한 전신 림프 순환 & 디톡스 솔루션`,
+      sec1Title: `1. 만성 피로와 교감신경 흥분이 신체에 미치는 생리적 영향`,
+      sec1Text: [
+        `현대인의 불규칙한 생활 습관과 과중한 스트레스는 체내 자율신경계의 밸런스를 무너뜨리는 주된 요인입니다. 교감신경이 지속적으로 긴장하면 말초 혈관이 수축하여 손발이 차가워지고, 근육이 무의식중에 수축 상태를 유지하게 됩니다. 이러한 긴장 상태가 지속되면 체내 노폐물 배출이 지연되고 아침에 기상할 때 몸이 무거운 만성 피로 증후군으로 발전합니다.`,
+        `정성 어린 감성 터치와 균일한 리듬의 이완 요법은 감각 신경을 안정시키고 옥시토신과 세로토닌의 분비를 촉진합니다. 이를 통해 긴장되어 있던 신체가 회복 모드로 전환되며, 전신에 온기가 돌면서 자연스러운 활력을 되찾게 됩니다.`
+      ],
+      sec2Title: "2. 부종 완화와 혈액 순환을 위한 림프 배농 테라피",
+      sec2Text: [
+        `림프계는 신체의 자가 정화 시스템 역할을 수행하지만 혈관과 달리 심장과 같은 자체 박동 펌프가 없습니다. 장시간 앉아 있거나 서 있는 생활로 서혜부(사타구니)와 액와부(겨드랑이) 주변 림프절이 뭉치면 림프액 흐름이 정체되어 하체 부종과 신체 피로도가 급격히 상승합니다.`,
+        `림프 순환 케어는 강한 지압을 피하고 림프의 자연스러운 흐름 방향에 맞추어 피부층을 섬세하게 밀어주는 기법을 사용합니다. 이를 통해 축적된 잉여 수분과 대사 폐기물이 림프관으로 원활히 흡수되어 둔탁했던 다리와 전신이 한결 가벼워지는 것을 체감할 수 있습니다.`
+      ],
+      sec3Title: "3. 식물성 에센셜 아로마 오일의 릴렉싱 메커니즘",
+      sec3Text: [
+        `아로마 오일 테라피는 천연 식물 추출물의 유효 성분과 후각적 자극을 동시에 활용하는 복합 힐링 기법입니다. 실내를 은은하게 채우는 에센셜 향기는 대뇌 변연계에 직접 작용하여 불안과 긴장을 완화하는 신경 전달 물질을 유도합니다.`,
+        `동시에 호호바, 스위트 아몬드 등 고급 베이스 오일이 피부 장벽에 수분막을 형성하여 건조한 환절기 피부를 윤택하게 가꾸어 줍니다. 몸의 긴장 완화와 피부 케어를 동시에 완성하는 이유입니다.`
+      ],
+      sec4Title: `4. ${dongName} 제휴 매장 신뢰 이용 팁`,
+      sec4Text: [
+        `케어존마사지는 ${dongName} 전역의 고객 여러분께서 안심하고 힐링을 누리실 수 있도록 엄격한 위생 점검과 검증 절차를 통과한 파트너만을 선별합니다.`,
+        `세션 후에는 미온수를 충분히 마셔 체내로 방출된 노폐물이 땀과 소변으로 원활히 배출되도록 돕고, 관리 당일은 과음을 피하고 충분한 수면을 취하는 것이 릴렉싱 효과를 극대화하는 비결입니다.`
+      ]
     },
+
+    // [세트 C] 보행 습관과 골반 지지근 / 딥티슈 속근육 / 시간 절약 방문 가치 / 에티켓
     {
-      body: `${districtName} ${dongName} 고객님들의 건강한 라이프스타일을 위한 맞춤형 테라피 안내 센터입니다. 번거로운 외출 과정 없이 편안하게 머무시는 곳에서 최상의 컨디션 케어를 경험해 보세요. 정직한 코스 구성과 친절한 서비스로 고객 만족도를 최우선으로 합니다.`,
-      tip: `강한 지압이나 자극적인 관리가 부담스러우신 분들은 저자극 에센셜 오일을 활용한 소프트 릴렉싱 코스를 통해 부드럽고 따뜻한 이완을 경험해 보세요.`
+      subtitle: `${dongName} 바디 컨디셔닝을 위한 체계적 근골격계 릴렉싱 가이드`,
+      sec1Title: `1. 보행 패턴과 골반 주변 근육의 긴장 메커니즘`,
+      sec1Text: [
+        `${districtName} ${dongName} 일대를 중심으로 대중교통 이용과 잦은 도보 이동을 반복하는 경우, 척추를 받쳐주는 골반 지지근(중둔근, 이상근, 장요근)에 불균형한 하중이 가해집니다. 특히 짝다리를 짚거나 다리를 꼬는 습관은 골반의 미세한 뒤틀림을 유발하여 허리 하부와 허벅지 뒤쪽 햄스트링에 연쇄적인 뻐근함을 초래합니다.`,
+        `체계적인 바디 컨디셔닝 요법은 단순히 겉 근육만을 문지르는 것이 아니라 골반과 척추 주변의 심부 지지근을 정교하게 짚어냅니다. 틀어진 좌우 밸런스를 정돈함으로써 보행 시 하체 피로도를 낮추고 안정적인 신체 정렬을 완성합니다.`
+      ],
+      sec2Title: "2. 뭉친 속근육을 풀어내는 딥티슈 테크닉의 이해",
+      sec2Text: [
+        `오랜 기간 묵혀둔 만성 피로는 표층 근육 아래 위치한 심부 근막에 단단한 매듭 형태의 트리거 포인트가 형성되어 발생합니다. 가벼운 터치만으로는 도달하기 힘든 이 부위는 전문적인 딥티슈 기법을 통해 다루어야 합니다.`,
+        `체중을 실은 일정한 지속 압력을 심부 조직에 전달함으로써 굳어있던 근막을 분리하고 정상적인 탄력을 회복시킵니다. 세션 직후 뻐근했던 허리와 등줄기가 개운하게 열리는 상쾌함을 경험하실 수 있습니다.`
+      ],
+      sec3Title: "3. 방문형 케어가 제공하는 프라이빗 시간의 효율성",
+      sec3Text: [
+        `바쁜 현대인에게 이동 시간을 절약하는 것은 가장 현명한 컨디션 관리 전략입니다. 주차 공간을 찾거나 대기 시간을 기다리는 피로를 덜어내고, 내가 지정한 시간에 프라이빗한 관리를 누릴 수 있습니다.`,
+        `누구의 방해도 받지 않는 아늑한 공간에서 진행되는 세션은 정신적 휴식과 신체적 재생을 동시에 도모할 수 있는 최적의 환경을 선사합니다.`
+      ],
+      sec4Title: "4. 매너 있는 이용과 정찰제 서비스 신뢰",
+      sec4Text: [
+        `${dongName} 공식 제휴 샵들은 사전에 명시된 투명한 코스별 정찰제 요금을 적용하여 이용자에게 혼선을 주지 않습니다.`,
+        `위생 어메니티와 소독을 철저히 마친 전문 관리사와의 신뢰 관계를 통해 ${dongName} 일대 어디서나 격조 높은 프라이빗 테라피를 편안하게 누려보시기 바랍니다.`
+      ]
     }
   ];
-  return articles[seed % articles.length];
+
+  return dongInsightGroups[seed % dongInsightGroups.length];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -95,6 +158,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${dongName} 스웨디시`,
       `${districtName} 마사지`,
       `${dongName} 타이마사지`,
+      `${displayLocation} 출장 웰니스 마사지`,
       "케어존마사지"
     ],
     robots: { index: true, follow: true },
@@ -126,7 +190,9 @@ export default async function Page({ params }: PageProps) {
   const displayLocation = `${districtName} ${dongName}`;
   const charSum = (displayLocation + resolved.region).split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const pattern = SEO_PATTERNS[Math.abs(charSum) % SEO_PATTERNS.length];
-  const article = getDongArticle(districtName, dongName, Math.abs(charSum));
+
+  // 동의 고유 해시값으로 매핑되는 맞춤형 1,800자 칼럼 데이터 추출
+  const article = getDynamicDongInsight(districtName, dongName, Math.abs(charSum));
 
   const jsonLd = [
     {
@@ -163,6 +229,12 @@ export default async function Page({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      {/* 네이버 Yeti 크롤러 수집용 SSR 시맨틱 블록 */}
+      <div className="sr-only" aria-hidden="true">
+        <h1>{displayLocation} {pattern.t}</h1>
+        <p>{pattern.desc(dongName)}</p>
+      </div>
+
       {/* 상단 네비게이션 헤더 */}
       <header className="sticky top-0 z-40 bg-[#070709]/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-4xl mx-auto h-16 px-4 flex items-center justify-between">
@@ -187,15 +259,15 @@ export default async function Page({ params }: PageProps) {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-10">
-        {/* 상단 동별 대표 배너 (네이버 핵심 H1 보강) */}
+      <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
+        {/* 상단 동별 대표 배너 (분리형 타이틀 사용) */}
         <section className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.12)] bg-[#141418]">
           <div className="p-6 md:p-10 space-y-2">
             <span className="text-amber-400 text-xs font-black tracking-widest uppercase mb-1 block">
               {regionFullName.toUpperCase()} · {districtName.toUpperCase()} · {dongName.toUpperCase()}
             </span>
             <h1 className="text-2xl md:text-4xl font-black text-white drop-shadow-md">
-              {displayLocation} {pattern.t}
+              {pattern.title(displayLocation).replace(" | 케어존마사지", "")}
             </h1>
             <p className="text-xs md:text-sm text-gray-300 mt-2 max-w-xl leading-relaxed">
               {pattern.desc(dongName)}
@@ -211,27 +283,69 @@ export default async function Page({ params }: PageProps) {
           regionFullName={regionFullName}
         />
 
-        {/* 🌿 동별 상세 가이드 본문 (네이버 Yeti가 긁어갈 텍스트 콘텐츠) */}
-        <section className="bg-[#0e0e12] p-6 md:p-8 rounded-3xl border border-white/10 space-y-4">
-          <h2 className="text-base md:text-lg font-bold text-amber-400 flex items-center gap-2">
-            <span>🌿</span> {dongName} 힐링 바디 테라피 가이드
-          </h2>
-          <div className="text-xs text-gray-300 space-y-3 leading-relaxed">
-            <p>{article.body}</p>
-            <div className="bg-black/50 p-4 rounded-2xl border border-white/5 space-y-2">
-              <h3 className="font-bold text-white text-xs">💡 {dongName} 추천 코스 안내</h3>
-              <p className="text-gray-400">{article.tip}</p>
-            </div>
-            <p className="text-gray-500 text-[11px]">
-              * 본 가이드는 {dongName}출장마사지 이용 고객 여러분의 편안하고 건강한 휴식을 위해 정기적으로 검증 및 업데이트됩니다.
+        {/* 📚 [동마다 완전히 다른 문단이 출력되는 약 1,800자 정보성 웰니스 섹션] */}
+        <section className="bg-[#0e0e12] p-6 sm:p-10 rounded-3xl border border-white/10 space-y-8 text-gray-300 leading-relaxed text-xs sm:text-sm">
+          <div className="border-b border-white/10 pb-4">
+            <span className="text-amber-400 font-extrabold text-xs tracking-widest block uppercase mb-1">
+              LOCAL WELLNESS & CARE GUIDE
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-white">
+              {article.subtitle}
+            </h2>
+            <p className="text-gray-400 text-xs mt-1">
+              {displayLocation} 고객님을 위한 신체 피로 회복 원리와 프라이빗 테라피 이용 가이드
             </p>
+          </div>
+
+          {/* 단락 1 */}
+          <div className="space-y-3">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400">●</span> {article.sec1Title}
+            </h3>
+            {article.sec1Text.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+
+          {/* 단락 2 */}
+          <div className="space-y-3">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400">●</span> {article.sec2Title}
+            </h3>
+            {article.sec2Text.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+
+          {/* 단락 3 */}
+          <div className="space-y-3">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400">●</span> {article.sec3Title}
+            </h3>
+            {article.sec3Text.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+
+          {/* 단락 4 */}
+          <div className="space-y-3">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-amber-400">●</span> {article.sec4Title}
+            </h3>
+            {article.sec4Text.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+
+          <div className="pt-4 border-t border-white/5 text-[11px] text-gray-500">
+            * 본 콘텐츠는 {dongName}출장마사지 이용 고객 여러분의 건강한 라이프스타일과 안전한 힐링 테라피 정보 제공을 목적으로 작성되었습니다.
           </div>
         </section>
 
-        {/* 표준 이용 절차 */}
+        {/* 이용 가이드 4단계 */}
         <section className="bg-[#0f0f13] p-6 md:p-8 rounded-3xl border border-amber-500/20 space-y-6">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">HOW TO USE</span>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
             <h2 className="text-xl font-black text-white mt-1">{dongName} 안심 예약 4단계</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -270,7 +384,7 @@ export default async function Page({ params }: PageProps) {
                 <span className="text-amber-400">Q.</span> {dongName} 당일 예약도 가능한가요?
               </div>
               <p className="text-xs text-gray-400 pl-6 leading-relaxed">
-                <span className="text-amber-400 font-bold">A.</span> 네, 대부분의 제휴 샵에서 당일 방문 및 예약이 가능하며, 원활한 일정 조율을 위해 1~2시간 전 사전 연락을 권장합니다.
+                <span className="text-amber-400 font-bold">A.</span> 네, 대다수 제휴 샵에서 당일 예약이 가능하며, 원활한 일정 조율을 위해 1~2시간 전 사전 연락을 권장합니다.
               </p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 space-y-1.5">

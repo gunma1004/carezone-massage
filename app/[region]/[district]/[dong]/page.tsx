@@ -36,21 +36,21 @@ function getRegionFullName(region: string): string {
 
 // 🎯 40가지 순환형 SEO 패턴 (수식어 분리 타이틀 + 동이름 밀착 결합 디스크립션)
 const SEO_PATTERNS = [
-  { t: "출장 웰니스 마사지 & 프리미엄 힐링 케어", d: (d: string) => `${d}출장마사지 안심 가이드. 나만의 편안한 공간에서 경험하는 1:1 맞춤 바디 테라피 코스와 정찰제 요금을 케어존마사지에서 확인하세요.` },
-  { t: "출장 스웨디시 마사지 감성 바디 릴렉스", d: (d: string) => `${d}출장마사지 추천 코스 안내. 섬세한 터치와 부드러운 오일 이완 프로그램으로 지친 피로를 풀어드립니다.` },
-  { t: "출장 아로마 마사지 오일 테라피 안내", d: (d: string) => `${d}출장마사지 힐링 케어. 천연 에센셜 오일로 누적된 일상 스트레스를 부드럽게 비워내는 솔루션입니다.` },
-  { t: "출장 타이 마사지 정통 바디 스트레칭", d: (d: string) => `${d}출장마사지 전문 안내. 숙련된 테라피스트의 전신 스트레칭과 시원한 압 조절로 굳은 몸을 개운하게 풀어드립니다.` },
-  { t: "출장 릴렉스 마사지 집중 피로 회복", d: (d: string) => `${d}출장마사지 큐레이션. 집이나 편안한 숙소에서 언제든 프라이빗하게 누리는 맞춤형 힐링 플랫폼입니다.` },
-  { t: "출장 딥티슈 마사지 속근육 집중 케어", d: (d: string) => `${d}출장마사지 프로그램. 만성적인 목 어깨 결림과 등, 허리의 뭉친 피로를 집중적으로 완화해 드립니다.` },
-  { t: "출장 림프 순환 마사지 바디 솔루션", d: (d: string) => `${d}출장마사지 정찰제 안내. 정체된 신체 림프 순환을 돕고 붓기 관리에 집중한 편안한 웰니스 케어입니다.` },
-  { t: "출장 감성 테라피 마사지 제휴 안내", d: (d: string) => `${d}출장마사지 실시간 연결. 편안한 휴식을 제공하는 검증된 파트너 샵 정보를 한눈에 비교해 보세요.` },
-  { t: "출장 밸런스 힐링 마사지 가이드", d: (d: string) => `${d}출장마사지 추천. 균형 잡힌 바디 컨디션과 활력 회복을 돕는 1:1 방문 맞춤 테라피를 만나보세요.` },
-  { t: "출장 프리미엄 바디 마사지 힐링 안내", d: (d: string) => `${d}출장마사지 VIP 안내. 고급 천연 오일과 세심한 케어가 어우러진 최고급 릴렉싱 프로그램을 안내합니다.` },
-  { t: "출장 건식 스트레칭 마사지 포인트 케어", d: (d: string) => `${d}출장마사지 코스 비교. 끈적임 없이 산뜻하게 굳은 근육의 긴장을 해소하는 수기 스트레칭 케어입니다.` },
-  { t: "출장 에스테틱 힐링 마사지 바디 웰빙", d: (d: string) => `${d}출장마사지 안내. 피부 보습과 뭉친 피로 회복을 함께 챙기는 복합 바디 웰니스 트리트먼트를 경험하세요.` },
-  { t: "출장 로열 바디케어 마사지 1:1 안내", d: (d: string) => `${d}출장마사지 매칭 플랫폼. 독립된 프라이빗 공간에서 온전한 휴식을 누리는 스마트 힐링 가이드라인을 제공합니다.` },
-  { t: "출장 소프트 아로마 마사지 포근한 이완", d: (d: string) => `${d}출장마사지 가이드. 자극 없는 편안한 손길로 일상의 피로와 스트레스를 부드럽게 녹여드립니다.` },
-  { t: "출장 호텔식 럭셔리 마사지 프라이빗 케어", d: (d: string) => `${d}출장마사지 웰니스 솔루션. 정갈한 서비스와 수준 높은 테라피 프로그램을 투명한 정찰제로 이용하세요.` }
+  { title: "출장 웰니스 마사지 & 프리미엄 힐링 케어", desc: (d: string) => `${d}출장마사지 안심 가이드. 나만의 편안한 공간에서 경험하는 1:1 맞춤 바디 테라피 코스와 정찰제 요금을 케어존마사지에서 확인하세요.` },
+  { title: "출장 스웨디시 마사지 감성 바디 릴렉스", desc: (d: string) => `${d}출장마사지 추천 코스 안내. 섬세한 터치와 부드러운 오일 이완 프로그램으로 지친 피로를 풀어드립니다.` },
+  { title: "출장 아로마 마사지 오일 테라피 안내", desc: (d: string) => `${d}출장마사지 힐링 케어. 천연 에센셜 오일로 누적된 일상 스트레스를 부드럽게 비워내는 솔루션입니다.` },
+  { title: "출장 타이 마사지 정통 바디 스트레칭", desc: (d: string) => `${d}출장마사지 전문 안내. 숙련된 테라피스트의 전신 스트레칭과 시원한 압 조절로 굳은 몸을 개운하게 풀어드립니다.` },
+  { title: "출장 릴렉스 마사지 집중 피로 회복", desc: (d: string) => `${d}출장마사지 큐레이션. 집이나 편안한 숙소에서 언제든 프라이빗하게 누리는 맞춤형 힐링 플랫폼입니다.` },
+  { title: "출장 딥티슈 마사지 속근육 집중 케어", desc: (d: string) => `${d}출장마사지 프로그램. 만성적인 목 어깨 결림과 등, 허리의 뭉친 피로를 집중적으로 완화해 드립니다.` },
+  { title: "출장 림프 순환 마사지 바디 솔루션", desc: (d: string) => `${d}출장마사지 정찰제 안내. 정체된 신체 림프 순환을 돕고 붓기 관리에 집중한 편안한 웰니스 케어입니다.` },
+  { title: "출장 감성 테라피 마사지 제휴 안내", desc: (d: string) => `${d}출장마사지 실시간 연결. 편안한 휴식을 제공하는 검증된 파트너 샵 정보를 한눈에 비교해 보세요.` },
+  { title: "출장 밸런스 힐링 마사지 가이드", desc: (d: string) => `${d}출장마사지 추천. 균형 잡힌 바디 컨디션과 활력 회복을 돕는 1:1 방문 맞춤 테라피를 만나보세요.` },
+  { title: "출장 프리미엄 바디 마사지 힐링 안내", desc: (d: string) => `${d}출장마사지 VIP 안내. 고급 천연 오일과 세심한 케어가 어우러진 최고급 릴렉싱 프로그램을 안내합니다.` },
+  { title: "출장 건식 스트레칭 마사지 포인트 케어", desc: (d: string) => `${d}출장마사지 코스 비교. 끈적임 없이 산뜻하게 굳은 근육의 긴장을 해소하는 수기 스트레칭 케어입니다.` },
+  { title: "출장 에스테틱 힐링 마사지 바디 웰빙", desc: (d: string) => `${d}출장마사지 안내. 피부 보습과 뭉친 피로 회복을 함께 챙기는 복합 바디 웰니스 트리트먼트를 경험하세요.` },
+  { title: "출장 로열 바디케어 마사지 1:1 안내", desc: (d: string) => `${d}출장마사지 매칭 플랫폼. 독립된 프라이빗 공간에서 온전한 휴식을 누리는 스마트 힐링 가이드라인을 제공합니다.` },
+  { title: "출장 소프트 아로마 마사지 포근한 이완", desc: (d: string) => `${d}출장마사지 가이드. 자극 없는 편안한 손길로 일상의 피로와 스트레스를 부드럽게 녹여드립니다.` },
+  { title: "출장 호텔식 럭셔리 마사지 프라이빗 케어", desc: (d: string) => `${d}출장마사지 웰니스 솔루션. 정갈한 서비스와 수준 높은 테라피 프로그램을 투명한 정찰제로 이용하세요.` }
 ];
 
 // 🌿 동(Dong)마다 문장 구조와 내용이 통째로 바뀌는 1,800자 분량의 동적 정보성 글 생성기
@@ -144,7 +144,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const charSum = (displayLocation + region).split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const pattern = SEO_PATTERNS[Math.abs(charSum) % SEO_PATTERNS.length];
 
-  const finalTitle = `${displayLocation} ${pattern.t} | 케어존마사지`;
+  const finalTitle = `${displayLocation} ${pattern.title} | 케어존마사지`;
   const finalDescription = pattern.desc(dongName);
   const canonicalUrl = `https://carezone-massage.netlify.app/${region}/${encodeURIComponent(districtName)}/${encodeURIComponent(dongName)}`;
 
@@ -231,7 +231,7 @@ export default async function Page({ params }: PageProps) {
 
       {/* 네이버 Yeti 크롤러 수집용 SSR 시맨틱 블록 */}
       <div className="sr-only" aria-hidden="true">
-        <h1>{displayLocation} {pattern.t}</h1>
+       <h1>{displayLocation} {pattern.title}</h1>
         <p>{pattern.desc(dongName)}</p>
       </div>
 
@@ -267,8 +267,8 @@ export default async function Page({ params }: PageProps) {
               {regionFullName.toUpperCase()} · {districtName.toUpperCase()} · {dongName.toUpperCase()}
             </span>
             <h1 className="text-2xl md:text-4xl font-black text-white drop-shadow-md">
-              {pattern.title(displayLocation).replace(" | 케어존마사지", "")}
-            </h1>
+  {displayLocation} {pattern.title}
+</h1>
             <p className="text-xs md:text-sm text-gray-300 mt-2 max-w-xl leading-relaxed">
               {pattern.desc(dongName)}
             </p>

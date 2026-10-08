@@ -36,7 +36,6 @@ function getRegionFullName(region: string): string {
   }
 }
 
-// 🎯 주요 구별 대표 동 목록 매핑 (동 단위 크롤링 내부 링크 확보)
 const DISTRICT_DONGS_MAP: Record<string, string[]> = {
   강서구: ["화곡동", "가양동", "등촌동", "발산동", "방화동", "염창동", "공항동", "마곡동"],
   강남구: ["역삼동", "논현동", "신사동", "삼성동", "대치동", "청담동", "도곡동", "개포동"],
@@ -46,29 +45,26 @@ const DISTRICT_DONGS_MAP: Record<string, string[]> = {
   영등포구: ["영등포동", "여의도동", "당산동", "도림동", "문래동", "양평동", "신길동", "대림동"],
 };
 
-// 🎯 40가지 순환형 SEO 패턴 (수정 없이 100% 원본 유지)
 const SEO_PATTERNS = [
-  { t: "출장 웰니스 마사지 & 프리미엄 케어", d: (r: string) => `${r}출장마사지 안심 가이드. 나만의 편안한 공간에서 경험하는 1:1 맞춤 바디 테라피 코스와 정찰제 요금을 케어존마사지에서 확인하세요.` },
-  { t: "출장 스웨디시 마사지 감성 바디 릴렉스", d: (r: string) => `${r}출장마사지 추천 코스 안내. 섬세한 터치와 부드러운 오일 이완 프로그램으로 지친 피로를 풀어드립니다.` },
-  { t: "출장 아로마 마사지 오일 테라피 안내", d: (r: string) => `${r}출장마사지 힐링 케어. 천연 에센셜 오일로 누적된 일상 스트레스를 부드럽게 비워내는 솔루션입니다.` },
-  { t: "출장 타이 마사지 정통 바디 스트레칭", d: (r: string) => `${r}출장마사지 전문 안내. 숙련된 테라피스트의 전신 스트레칭과 시원한 압 조절로 굳은 몸을 개운하게 풀어드립니다.` },
-  { t: "출장 릴렉스 마사지 집중 피로 회복", d: (r: string) => `${r}출장마사지 큐레이션. 집이나 편안한 숙소에서 언제든 프라이빗하게 누리는 맞춤형 힐링 플랫폼입니다.` },
-  { t: "출장 딥티슈 마사지 속근육 집중 케어", d: (r: string) => `${r}출장마사지 프로그램. 만성적인 목 어깨 결림과 등, 허리의 뭉친 피로를 집중적으로 완화해 드립니다.` },
-  { t: "출장 림프 순환 마사지 바디 솔루션", d: (r: string) => `${r}출장마사지 정찰제 안내. 정체된 신체 림프 순환을 돕고 붓기 관리에 집중한 편안한 웰니스 케어입니다.` },
-  { t: "출장 감성 테라피 마사지 제휴 안내", d: (r: string) => `${r}출장마사지 실시간 연결. 편안한 휴식을 제공하는 검증된 파트너 샵 정보를 한눈에 비교해 보세요.` },
-  { t: "출장 밸런스 힐링 마사지 가이드", d: (r: string) => `${r}출장마사지 추천. 균형 잡힌 바디 컨디션과 활력 회복을 돕는 1:1 방문 맞춤 테라피를 만나보세요.` },
-  { t: "출장 프리미엄 바디 마사지 힐링 안내", d: (r: string) => `${r}출장마사지 VIP 안내. 고급 천연 오일과 세심한 케어가 어우러진 최고급 릴렉싱 프로그램을 안내합니다.` },
-  { t: "출장 건식 스트레칭 마사지 포인트 케어", d: (r: string) => `${r}출장마사지 코스 비교. 끈적임 없이 산뜻하게 굳은 근육의 긴장을 해소하는 수기 스트레칭 케어입니다.` },
-  { t: "출장 에스테틱 힐링 마사지 바디 웰빙", d: (r: string) => `${r}출장마사지 안내. 피부 보습과 뭉친 피로 회복을 함께 챙기는 복합 바디 웰니스 트리트먼트를 경험하세요.` },
-  { t: "출장 로열 바디케어 마사지 1:1 안내", d: (r: string) => `${r}출장마사지 매칭 플랫폼. 독립된 프라이빗 공간에서 온전한 휴식을 누리는 스마트 힐링 가이드라인을 제공합니다.` },
-  { t: "출장 소프트 아로마 마사지 포근한 이완", d: (r: string) => `${r}출장마사지 가이드. 자극 없는 편안한 손길로 일상의 피로와 스트레스를 부드럽게 녹여드립니다.` },
-  { t: "출장 호텔식 럭셔리 마사지 프라이빗 케어", d: (r: string) => `${r}출장마사지 웰니스 솔루션. 정갈한 서비스와 수준 높은 테라피 프로그램을 투명한 정찰제로 이용하세요.` }
+  { title: "출장 웰니스 마사지 & 프리미엄 케어", desc: (r: string) => `${r}출장마사지 안심 가이드. 나만의 편안한 공간에서 경험하는 1:1 맞춤 바디 테라피 코스와 정찰제 요금을 케어존마사지에서 확인하세요.` },
+  { title: "출장 스웨디시 마사지 감성 바디 릴렉스", desc: (r: string) => `${r}출장마사지 추천 코스 안내. 섬세한 터치와 부드러운 오일 이완 프로그램으로 지친 피로를 풀어드립니다.` },
+  { title: "출장 아로마 마사지 오일 테라피 안내", desc: (r: string) => `${r}출장마사지 힐링 케어. 천연 에센셜 오일로 누적된 일상 스트레스를 부드럽게 비워내는 솔루션입니다.` },
+  { title: "출장 타이 마사지 정통 바디 스트레칭", desc: (r: string) => `${r}출장마사지 전문 안내. 숙련된 테라피스트의 전신 스트레칭과 시원한 압 조절로 굳은 몸을 개운하게 풀어드립니다.` },
+  { title: "출장 릴렉스 마사지 집중 피로 회복", desc: (r: string) => `${r}출장마사지 큐레이션. 집이나 편안한 숙소에서 언제든 프라이빗하게 누리는 맞춤형 힐링 플랫폼입니다.` },
+  { title: "출장 딥티슈 마사지 속근육 집중 케어", desc: (r: string) => `${r}출장마사지 프로그램. 만성적인 목 어깨 결림과 등, 허리의 뭉친 피로를 집중적으로 완화해 드립니다.` },
+  { title: "출장 림프 순환 마사지 바디 솔루션", desc: (r: string) => `${r}출장마사지 정찰제 안내. 정체된 신체 림프 순환을 돕고 붓기 관리에 집중한 편안한 웰니스 케어입니다.` },
+  { title: "출장 감성 테라피 마사지 제휴 안내", desc: (r: string) => `${r}출장마사지 실시간 연결. 편안한 휴식을 제공하는 검증된 파트너 샵 정보를 한눈에 비교해 보세요.` },
+  { title: "출장 밸런스 힐링 마사지 가이드", desc: (r: string) => `${r}출장마사지 추천. 균형 잡힌 바디 컨디션과 활력 회복을 돕는 1:1 방문 맞춤 테라피를 만나보세요.` },
+  { title: "출장 프리미엄 바디 마사지 힐링 안내", desc: (r: string) => `${r}출장마사지 VIP 안내. 고급 천연 오일과 세심한 케어가 어우러진 최고급 릴렉싱 프로그램을 안내합니다.` },
+  { title: "출장 건식 스트레칭 마사지 포인트 케어", desc: (r: string) => `${r}출장마사지 코스 비교. 끈적임 없이 산뜻하게 굳은 근육의 긴장을 해소하는 수기 스트레칭 케어입니다.` },
+  { title: "출장 에스테틱 힐링 마사지 바디 웰빙", desc: (r: string) => `${r}출장마사지 안내. 피부 보습과 뭉친 피로 회복을 함께 챙기는 복합 바디 웰니스 트리트먼트를 경험하세요.` },
+  { title: "출장 로열 바디케어 마사지 1:1 안내", desc: (r: string) => `${r}출장마사지 매칭 플랫폼. 독립된 프라이빗 공간에서 온전한 휴식을 누리는 스마트 힐링 가이드라인을 제공합니다.` },
+  { title: "출장 소프트 아로마 마사지 포근한 이완", desc: (r: string) => `${r}출장마사지 가이드. 자극 없는 편안한 손길로 일상의 피로와 스트레스를 부드럽게 녹여드립니다.` },
+  { title: "출장 호텔식 럭셔리 마사지 프라이빗 케어", desc: (r: string) => `${r}출장마사지 웰니스 솔루션. 정갈한 서비스와 수준 높은 테라피 프로그램을 투명한 정찰제로 이용하세요.` }
 ];
 
-// 🌿 구(District)마다 4개 단락 주제와 문장 구조 자체가 완전히 바뀌는 2,000자 정보성 글 생성기
 function getDynamicDistrictInsight(districtName: string, seed: number) {
   const sectionsGroup = [
-    // [세트 A] 직장인 체형 불균형 / 목·어깨 긴장 / 건식 vs 오일 / 독립 공간의 장점
     {
       subtitle: `${districtName} 직장인 및 현대인을 위한 바디 밸런스 회복 가이드`,
       sec1Title: "1. 좌식 생활과 경추·승모근의 만성 긴장 메커니즘",
@@ -92,8 +88,6 @@ function getDynamicDistrictInsight(districtName: string, seed: number) {
         `또한 최근 디스크 시술을 받았거나 임신, 급성 염증 질환이 있는 경우에는 관리 시작 전 담당 힐러에게 컨디션을 명확히 전달하여 안전한 맞춤 압 조절을 진행하시길 권장합니다.`
       ]
     },
-
-    // [세트 B] 스트레스 호르몬 완화 / 림프 순환 부종 / 온열 이완 / 위생 및 컨디션 관리
     {
       subtitle: `${districtName} 거주자 및 방문객을 위한 일상 스트레스 리셋 솔루션`,
       sec1Title: "1. 만성 스트레스와 자율신경계 불균형이 신체에 미치는 영향",
@@ -117,8 +111,6 @@ function getDynamicDistrictInsight(districtName: string, seed: number) {
         `${districtName} 케어존마사지는 고객 여러분께서 믿고 선택하실 수 있도록 위생 수칙과 에티켓을 준수하는 검증된 매장 정보만을 엄선하여 실시간 제공합니다.`
       ]
     },
-
-    // [세트 C] 보행 습관 및 골반 밸런스 / 딥티슈 속근육 / 시간 효율성 / 정찰제 신뢰
     {
       subtitle: `${districtName} 바디 컨디셔닝을 위한 체계적 근막 릴렉싱 분석`,
       sec1Title: "1. 보행 패턴과 골반 주변 근육의 긴장 패턴 해소",
@@ -156,11 +148,11 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const districtName = safeDecode(district);
   const regionFullName = getRegionFullName(region);
 
-  const displayLocation = dongName ? `${districtName} ${dongName}` : districtName;
+  const displayLocation = dongName ? `${districtName}${dongName}` : districtName;
   const charSum = (displayLocation + region).split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const pattern = SEO_PATTERNS[Math.abs(charSum) % SEO_PATTERNS.length];
 
-  const finalTitle = `${displayLocation} ${pattern.t} | 케어존마사지`;
+  const finalTitle = `${displayLocation}${pattern.title} | 케어존마사지`;
   const finalDescription = pattern.desc(districtName);
 
   const canonicalUrl = `https://carezone-massage.netlify.app/${region}/${encodeURIComponent(districtName)}${
@@ -208,11 +200,10 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
   const districtName = safeDecode(district);
   const regionFullName = getRegionFullName(region);
 
-  const displayLocation = dongName ? `${districtName} ${dongName}` : districtName;
+  const displayLocation = dongName ? `${districtName}${dongName}` : districtName;
   const charSum = (displayLocation + region).split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const pattern = SEO_PATTERNS[Math.abs(charSum) % SEO_PATTERNS.length];
 
-  // 구의 고유 해시값으로 매핑되는 맞춤형 2,000자 칼럼 데이터 추출
   const article = getDynamicDistrictInsight(districtName, Math.abs(charSum));
 
   const dongsList = DISTRICT_DONGS_MAP[districtName] || [
@@ -246,7 +237,7 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
       />
 
       <div className="sr-only" aria-hidden="true">
-        <h1>{displayLocation} {pattern.t}</h1>
+        <h1>{displayLocation} {pattern.title}</h1>
         <p>{pattern.desc(districtName)}</p>
       </div>
 
@@ -274,14 +265,13 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
-        {/* 상단 지역 배너 */}
         <section className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.12)] bg-[#141418]">
           <div className="p-6 md:p-10 space-y-2">
             <span className="text-amber-400 text-xs font-black tracking-widest uppercase mb-1 block">
               {regionFullName.toUpperCase()} · DISTRICT WELLNESS HUB
             </span>
             <h1 className="text-2xl md:text-4xl font-black text-white drop-shadow-md">
-              {pattern.title(displayLocation).replace(" | 케어존마사지", "")}
+              {displayLocation} {pattern.title}
             </h1>
             <p className="text-xs md:text-sm text-gray-300 mt-2 max-w-xl leading-relaxed">
               {pattern.desc(districtName)}
@@ -289,7 +279,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
         </section>
 
-        {/* 정적 동별 링크 그리드 */}
         <section className="space-y-4">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <h2 className="text-lg font-black text-white flex items-center gap-2">
@@ -317,10 +306,8 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
         </section>
 
-        {/* 샵 리스트 클라이언트 컴포넌트 */}
         <ClientTextMixer region={region} district={districtName} dongName={dongName} />
 
-        {/* 📚 [구마다 완전히 다른 본문 문단이 출력되는 2,000자 정보성 섹션] */}
         <section className="bg-[#0e0e12] p-6 sm:p-10 rounded-3xl border border-white/10 space-y-8 text-gray-300 leading-relaxed text-xs sm:text-sm">
           <div className="border-b border-white/10 pb-4">
             <span className="text-amber-400 font-extrabold text-xs tracking-widest block uppercase mb-1">
@@ -334,7 +321,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             </p>
           </div>
 
-          {/* 단락 1 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {article.sec1Title}
@@ -344,7 +330,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 2 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {article.sec2Title}
@@ -354,7 +339,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 3 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {article.sec3Title}
@@ -364,7 +348,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 4 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {article.sec4Title}
@@ -379,7 +362,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
         </section>
 
-        {/* 이용 가이드 4단계 */}
         <section className="bg-[#0f0f13] p-6 md:p-8 rounded-3xl border border-amber-500/20 space-y-6">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
@@ -409,7 +391,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
         </section>
 
-        {/* 자주 묻는 질문 (FAQ) */}
         <section className="space-y-4">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ</span>
